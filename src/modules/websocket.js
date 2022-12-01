@@ -254,7 +254,7 @@ const Websocket = superclass => class extends superclass {
     const wsRef = {}
     wsRef.closeInitiated = false
     const initConnect = () => {
-      const ws = new WebSocketClient(url)
+      const ws = new WebSocketClient(url, { perMessageDeflate: false })
       wsRef.ws = ws
 
       ws.on('open', () => {
