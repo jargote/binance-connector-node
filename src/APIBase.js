@@ -5,7 +5,7 @@ const { removeEmptyValue, buildQueryString, createRequest, defaultLogger } = req
 
 class APIBase {
   constructor (options) {
-    const { apiKey, apiSecret, baseURL, logger, timeout, proxy, httpsAgent, privateKey, privateKeyPassphrase } = options
+    const { apiKey, apiSecret, baseURL, debug, logger, timeout, proxy, httpsAgent, privateKey, privateKeyPassphrase } = options
 
     this.apiKey = apiKey
     this.apiSecret = apiSecret
@@ -14,6 +14,7 @@ class APIBase {
     this.timeout = timeout || 0
     this.proxy = proxy || false
     this.httpsAgent = httpsAgent
+    this.debug = debug
     this.logger = logger || defaultLogger
     this.privateKey = privateKey || ''
     this.privateKeyPassphrase = privateKeyPassphrase || ''

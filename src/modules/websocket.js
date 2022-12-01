@@ -258,7 +258,7 @@ const Websocket = superclass => class extends superclass {
       wsRef.ws = ws
 
       ws.on('open', () => {
-        this.logger.info(`Connected to the Websocket Server: ${url}`)
+        this.debug && this.logger.info(`Connected to the Websocket Server: ${url}`)
         callbacks.open && callbacks.open()
       })
 
@@ -270,14 +270,14 @@ const Websocket = superclass => class extends superclass {
 
       ws.on('ping', () => {
         // As ping pong is very important for maintaining the connection, log them as INFO level
-        this.logger.info('Received PING from server')
+        this.debug && this.logger.info('Received PING from server')
         callbacks.ping && callbacks.ping()
         ws.pong()
-        this.logger.info('Responded PONG to server\'s PING message')
+        this.debug && this.logger.info('Responded PONG to server\'s PING message')
       })
 
       ws.on('pong', () => {
-        this.logger.info('Received PONG from server')
+        this.debug && this.logger.info('Received PONG from server')
         callbacks.pong && callbacks.pong()
       })
 
@@ -299,7 +299,7 @@ const Websocket = superclass => class extends superclass {
         }
       })
     }
-    this.logger.debug(`Connecting to: ${url}`)
+    this.debug && this.logger.debug(`Connecting to: ${url}`)
     initConnect()
     return wsRef
   }
